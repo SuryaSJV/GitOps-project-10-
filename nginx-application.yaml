@@ -4,7 +4,7 @@ metadata:
   name: nginx-app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=nginx
+    argocd-image-updater.argoproj.io/image-list: nginx=nginx:latest  # Add tag
     argocd-image-updater.argoproj.io/nginx.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-branch: main
@@ -23,4 +23,5 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
+
 
