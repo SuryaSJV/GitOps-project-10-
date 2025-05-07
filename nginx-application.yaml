@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: nginx=nginx
+    argocd-image-updater.argoproj.io/nginx.update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/git-commit-user-name: Auto Updater
+    argocd-image-updater.argoproj.io/git-commit-user-email: auto@updater.com
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/SuryaSJV/GitOps-project-10-.git
+    targetRevision: main
+    path: nginx
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
