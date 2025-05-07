@@ -18,7 +18,7 @@ spec:
   source:
     repoURL: https://github.com/SuryaSJV/GitOps-project-10-.git
     targetRevision: main
-    path: nginx
+    path: gitops-demo/nginx/
   syncPolicy:
     automated: {}
     syncOptions:
